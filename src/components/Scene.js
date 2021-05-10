@@ -16,7 +16,7 @@ const Scene = ({ scene }) => {
             <AudioLayer audio={scene.audio} />
 
             <img
-                src={scene.src ? scene.src : `/img/${scene.image}`}
+                src={scene.src ? scene.src : `static://img/${scene.image}`}
                 style={{
                     width: "100vw",
                     height: "100vh",
