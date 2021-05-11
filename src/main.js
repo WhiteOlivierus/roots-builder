@@ -1,6 +1,8 @@
 const { app, BrowserWindow, session } = require('electron');
 const path = require('path');
 
+const isDev = require('electron-is-dev');
+
 if (require('electron-squirrel-startup')) app.quit();
 
 const createWindow = () => {
@@ -11,13 +13,13 @@ const createWindow = () => {
   });
 
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    fullscreen: true,
+    autoHideMenuBar: !isDev
   });
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  mainWindow.webContents.openDevTools();
+  if (isDev) mainWindow.webContents.openDevTools();
 };
 
 app.on('ready', createWindow);
